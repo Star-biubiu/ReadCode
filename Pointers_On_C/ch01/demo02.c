@@ -33,7 +33,7 @@ int main( void )
     }
 #endif
 
-// 使用fgets()函数可以实现换行（不能输入多行文本），但是每行的长度受到限制
+// 使用fgets()函数可以实现换行（可以输入多行文本），但是每行的长度受到限制
 #if FGETS
     char *buffer = NULL;                            // 动态分配的输入缓冲区
     size_t buffer_size = 0;                         // 当前缓存区大小
