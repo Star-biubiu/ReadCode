@@ -7,7 +7,7 @@
 #include <string.h>
 #include <assert.h>
 
-#define GETCHAR 1
+#define GETCHAR 0
 #define FGETS 1
 #define BUFFER_MAX 100                  // 每一行的最大长度
 
@@ -15,7 +15,7 @@ int main( void )
 {
     
 // 使用getchar()函数每次回车都会将键盘数据输入到缓存区，每一行可以无限长，但无法实现换行（不能输入多行文本）
-#if !GETCHAR
+#if GETCHAR
     int str, line, flag;
     flag = 1;
     line = 0;
@@ -41,7 +41,7 @@ int main( void )
     int line = 0;                                   // 整型类型   行数
     char strline[20];                               // 字符串类型 行数
 
-    do{
+    do {
         buffer = (char *)realloc(buffer, buffer_size + BUFFER_MAX);
         assert(buffer != NULL);                     // 断言不为空指针
         if (line == 0)                              // 主要原因是 buffer一开始没有初值，用strcat后第一行出现乱码
