@@ -14,6 +14,7 @@ int main(void)
     scanf("%lf %lf %lf", &a[0], &a[1], &a[2]);
     if (a[0] <= 0 || a[1] <=0 || a[2] <= 0)
         puts("Input Error");
+    // 将数据升序排列
     for (int i = 0; i < 2; i++) {
         if (a[i] > a[i + 1]){
             temp = a[i];
@@ -22,10 +23,13 @@ int main(void)
         }
     }
 
+    // 最短两条边要大于最长边
     if(a[0] + a[1] <= a[2])
         puts("Not triangle");
+    // 最短边和最长边相等 即等边
     else if(a[0] == a[2])
         puts("equation3");
+    // 中间边和其它俩边有一边相等即为等腰
     else if(a[0] == a[1] || a[1] == a[2])
         puts("equation2");
     else
