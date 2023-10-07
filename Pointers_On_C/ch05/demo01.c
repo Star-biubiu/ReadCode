@@ -11,7 +11,7 @@ int main(void)
 
     while ( (ch = getchar()) != EOF) {
         if (ch >= 'A' && ch <= 'Z')
-            ch += 32;
+            ch += 32;  // <==>  ch += 'a' - 'A';
         putchar(ch);
     }
 
