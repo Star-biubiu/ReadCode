@@ -30,9 +30,13 @@ int main(void)
     
     if( sign = del_substr(source_str, chars1) )
         printf("str = %s\n", source_str);
+    else
+        printf("source_str have not %s\n", chars1);
 
     if( sign = del_substr(source_str, chars2) )
         printf("str = %s\n", source_str);
+    else
+        printf("source_str have not %s\n", chars2);
 
     return 0;
 }
