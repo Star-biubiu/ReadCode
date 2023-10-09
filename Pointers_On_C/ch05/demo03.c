@@ -30,16 +30,16 @@ int main(void)
 }
 
 unsigned int reverse_bits( unsigned int value ) {
-    unsigned int tmp_num = 0;
+    unsigned int new_vlue = 0;
 
-    // 编写函数时要注意不要让它依赖于你的机器上整型值的长度。
+                            // 编写函数时要注意不要让它依赖于你的机器上整型值的长度。
     unsigned int i = 1;     // i进行左移，只要i不等于0，就仍在限定长度内
     for (i = 1; i != 0; i <<= 1) {
-        tmp_num <<= 1;
+        new_vlue <<= 1;
         if ( value & 1 ) {  // value最后一位等于1
-            tmp_num |= 1;   // tmp_num最后一位置1
+            new_vlue |= 1;  // new_vlue最后一位置1
         }
         value >>= 1;
     }
-    return tmp_num;  
+    return new_vlue;  
 }
