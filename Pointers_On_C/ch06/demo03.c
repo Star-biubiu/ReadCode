@@ -13,7 +13,7 @@ void reverse_string( char *string );
 int main(void)
 {
     int sign = -1;
-    char source_str[] = "ABCDEFG";
+    char source_str[] = "ABCDEFGH";
 
     printf("%s\n", source_str);
     reverse_string(source_str);
