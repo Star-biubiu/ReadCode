@@ -43,7 +43,7 @@ int main(void)
 }
 
 char *find_char( char const *source, char const *chars ) {
-    char const *ptr;
+    char const *ptr;                                // ptr指向char const的类型，因此ptr的类型也是char const，只有char会警告 (限定词规则)
 
     if ( source == NULL || chars == NULL)
         return NULL;
@@ -51,7 +51,7 @@ char *find_char( char const *source, char const *chars ) {
     while ( *source != '\0') {
         for ( ptr = chars; *ptr != '\0'; ) {
             if ( *ptr++ == *source)
-                return (char *)source;          // source是const修饰，返回const限定的变量，必须显式进行强制类型转换成 非const的类型
+                return (char *)source;              // source是const修饰，返回const限定的变量，必须显式进行强制类型转换成 非const的类型
         }
         source++;
     }
