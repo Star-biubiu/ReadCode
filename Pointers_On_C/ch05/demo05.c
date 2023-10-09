@@ -86,6 +86,7 @@ int store_bit_field(int original_value,     // 原始值
     return temp;
 }
 
+
 #if 0
 int store_bit_field(int original_value, int value_to_store, unsigned starting_bit, unsigned ending_bit) {
     unsigned mask;
