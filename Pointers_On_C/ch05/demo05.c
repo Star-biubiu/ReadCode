@@ -40,7 +40,7 @@ int main(void)
     int original_value = 0xffff, value_to_store = 0x123, value;
     unsigned starting_bit = 13, ending_bit = 9;
     value = store_bit_field(original_value, value_to_store, starting_bit, ending_bit);
-    printf("value = 0x%x\n", value);
+    printf("value\t = \t0x%x\n", value);
 
     return 0;
 }
@@ -60,7 +60,7 @@ int store_bit_field(int original_value,     // 原始值
     printf("mask\t = \t0x%x\n", mask);                  // 0x3e00   0011 1110 0000 0000
 
     // 2. 用掩码的反码对原值执行AND操作
-    mask = ~mask;   // 掩码的反码
+    mask = ~mask;                                       // 掩码的反码
     printf("~mask\t = \t0x%x\n", mask);                 // 0xc1ff   1100 0001 1111 1111
     
     temp = original_value & mask;
@@ -69,9 +69,9 @@ int store_bit_field(int original_value,     // 原始值
     // 3. 将新值左移，使它与那几个需要存储的位对齐
     for (int i = 0; i <= num_bit; i++)
         store |= 1 << i;
-    printf("store__\t = \t0x%x\n", store);              
+    printf("store__\t = \t0x%x\n", store);              // 0x1f     0000 0000 0001 1111   
     value_to_store = value_to_store & store;
-    printf("store\t = \t0x%x\n", value_to_store);
+    printf("store\t = \t0x%x\n", value_to_store);       // 0x3      0000 0000 0000 0011
     value_to_store <<= ending_bit;
     printf("store\t = \t0x%x\n", value_to_store);       // 0x600    0000 0110 0000 0000
 

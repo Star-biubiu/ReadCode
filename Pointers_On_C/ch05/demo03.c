@@ -23,8 +23,8 @@ int main(void)
     scanf("%d", &num);
 
     new_num = reverse_bits(num);
-    printf("%X\n", num);
-    printf("%X\n", new_num);
+    printf("0X%8X\n", num);
+    printf("0X%8X\n", new_num);
 
     return 0;
 }

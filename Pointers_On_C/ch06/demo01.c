@@ -21,9 +21,8 @@ char *find_char( char const *source, char const *chars );
 
 int main(void)
 {
-    char *source_str = "ABCDEF";
-    char *chars1 = "XYZ", *chars2 = "XRCQEF";       
-
+    char source_str[] = "ABCDEF";
+    char chars1[] = "XYZ", chars2[] = "XRCQEF";       
 
     char *str1 = find_char(source_str, chars1);     // 不能对NULL进行解引用
     printf("source_str1 = %p\n", source_str);

@@ -49,7 +49,7 @@ int del_substr( char *str, char const *substr ) {
 
     while ( *str != '\0' ) {
         temp = match_substr(str, substr);
-        if (temp != NULL)                           // 匹配成功，跳出循环
+        if (temp != NULL)                           // 匹配成功，跳出循环   传递指针变量也是传递一个指针变量的拷贝，即地址的拷贝
             break;
         str++;                                      // 不匹配，指向下一个地址
     }
