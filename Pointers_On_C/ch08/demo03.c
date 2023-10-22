@@ -40,4 +40,4 @@ int identity_matrix( int matrix[][10] ) {
             // if( (i == j && matrix[i][j] != 1) || (i != j && matrix[i][j] != 0) ) 
             //     return 0;
     return 1;
-}
+} 
