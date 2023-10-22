@@ -45,10 +45,13 @@ int main( void )
         buffer = (char *)realloc(buffer, buffer_size + BUFFER_MAX);
         assert(buffer != NULL);                     // 断言不为空指针
         if (line == 0)                              // 主要原因是 buffer一开始没有初值，用strcat后第一行出现乱码
-            strcpy(buffer, "");                     // 为buffer赋初值，防止第一行出现乱码
+                // *buffer = "";                        // 错误，""是字符串指针，值为地址
+                // buffer = "";                         // 错误，这会导致buffer指向的地址改变，不再指向分配的内存
+            // strcpy(buffer, "");                  // 1. 为buffer赋初值:空字符，防止第一行出现乱码
+            *buffer = '\0';                         // 2. 为buffer赋初值:空字符，防止第一行出现乱码
 
         line++;
-        sprintf(strline, " %d ", line);             // 将行数 整型 -> 字符串
+        sprintf(strline, "%d ", line);             // 将行数 整型 -> 字符串
         read_size = strlen(buffer);                 // 计算buffer已经缓存的字节数
         strcat(buffer + read_size, strline);        // 在buffer末尾（fgets保存每行末尾换行符，故buffer末为新一行行首）加入行数
         read_size = strlen(buffer);                 // 更新buffer已经缓存的字节数
