@@ -11,7 +11,6 @@
 */
 
 #include <stdio.h>
-#include <float.h>
 
 #define Ture  1
 #define Flase 0
