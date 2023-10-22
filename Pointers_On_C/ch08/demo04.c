@@ -36,15 +36,15 @@ int main(void)
 // 利用内存连续的特性对多维数组进行操作，例如数组为 matrix[10][10] 则 *(*(matrix + 0) + 9) = matrix[0][9] *(*(matrix + 0) + 10) = matrix[1][0]
 // 注意，二维数组必须先通过*(matrix + 0)指向最内层第一个元素的地址 此时进行*(matrix + 0) + n才是元素间的地址移动，matrix + n是数组间的移动
 //      高维数组同理，如三维数组 即**matrix指向最内层第一个元素的地址
-int identity_matrix( int *matrix, int idex ) {
+int identity_matrix( int *matrix_inner, int idex ) { // matrix_inner = *matrix matrix_inner指向第二维元素的地址
     int i, j, num = 0;
     for(i = 0; i < idex; i++) 
         for(j = 0; j < idex; j++) {
-            // printf("matrix[%d][%d] = %d\n", i, j, *(matrix++));
-            if( (i == j && 1 != *matrix) ||
-                (i != j && 0 != *matrix) )
+            // printf("matrix[%d][%d] = %d\n", i, j, *(matrix_inner++));
+            if( (i == j && 1 != *matrix_inner) ||
+                (i != j && 0 != *matrix_inner) )
                 return Flase;
-            matrix++;
+            matrix_inner++;
         }
     return Ture;
 }
