@@ -18,13 +18,13 @@
 #define False   0
 #define True    1
 
-int rank[MAX_ARRAY];                                    // 皇后位置存储数组(静态变量，默认为0) 最大值为 MAX_ARRAY
-int vis[MAX_ARRAY];                                     // 皇后状态存储数组(静态变量，默认为0) 最大值为 MAX_ARRAY
+int rank[MAX_ARRAY];                                    // 皇后位置存储数组(静态变量，默认为0) 最大值为 MAX_ARRAY 每行皇后所在的列号
+int vis[MAX_ARRAY];                                     // 皇后状态存储数组(静态变量，默认为0) 最大值为 MAX_ARRAY 标记哪些列已经放置皇后
 int n, cnt=0;
 
 void dfs(int pos) {                                     // 递归回溯法
 
-	if( pos == n + 1 ) {                                // 递归边界条件, 直到执行 n行 退出(行从1开始 到n+1结束)
+	if( pos == n + 1 ) {                                // 递归边界条件, 放置 n个皇后 退出(行从1开始 到n+1结束)
 		cnt++;
 		int i, j;
 		for(i = 1; i < n + 1; i++) {
@@ -42,11 +42,11 @@ void dfs(int pos) {                                     // 递归回溯法
 	}
 
     int i, flag;
-	for( i = 1; i < n + 1; i++ ) {                      // 枚举每行 (棋盘为n行n列 行从1开始 到n+1结束) 	行
+	for( i = 1; i < n + 1; i++ ) {                      // 枚举每行 (棋盘为n行n列 行从1开始 到n+1结束) 	 在当前行，尝试放置皇后
 		if(vis[i] == False) {                           
 			flag = True;								// 第i行未放置皇后, 标志位置1
 
-			for( int j = 1; j < pos; j++ ) {            // 枚举 第pos列 之前的皇后 					   列
+			for( int j = 1; j < pos; j++ ) {            // 枚举 第pos列 之前的皇后 						检查是否可以放置皇后		   
 				// 判断是否处于同一右斜线，可以总结规律: 两位置的行号加上列号相等	
 				// 判断是否处于同一左斜线，可以总结规律: 两位置的行号减上列号相等
 
@@ -56,11 +56,11 @@ void dfs(int pos) {                                     // 递归回溯法
 				}
 			}
 
-			if( flag ) {
-				rank[pos] = i;                          // pos列在i行 
-				vis[i] = True;
-				dfs(pos + 1); 
-				vis[i] = False;
+			if( flag ) {								// 通过检查
+				rank[pos] = i;                          // 将皇后放在这个位置， pos列在i行 
+				vis[i] = True;							// 标记这一行已经放置皇后
+				dfs(pos + 1); 							// 开始下一行
+				vis[i] = False;							// 递归返回 说明当前位置不行，解除标记
 			}
 		}
 	}
